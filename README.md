@@ -19,6 +19,12 @@ Get a list of Real Madrid recent matches as well as the next matches.
 `GET /spain/real-madrid`
 
 
+## Related
+
+* [tvrealmadrid.com](https://github.com/pablopunk/tvrealmadrid.com): See next matches for Real Madrid
+* [livesoccertv-parser](https://github.com/pablopunk/livesoccertv-parser): Fetch matches info with node
+
+
 ## Contributors
 
 | Name             | Website              |
