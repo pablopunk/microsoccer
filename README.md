@@ -1,18 +1,26 @@
 # microsoccer
 
-> WIP. Don't use this yet
+<p align="center">
+  <a href="https://travis-ci.org/pablopunk/microsoccer"><img src="https://img.shields.io/travis/pablopunk/microsoccer.svg" /> </a>
+  <a href="https://github.com/sindresorhus/xo"><img src="https://img.shields.io/badge/code_style-XO-5ed9c7.svg" /> </a>
+  <a href="https://github.com/pablopunk/miny"><img src="https://img.shields.io/badge/made_with-miny-1eced8.svg" /> </a>
+  <a href="https://www.npmjs.com/package/microsoccer"><img src="https://img.shields.io/npm/dt/microsoccer.svg" /></a>
+</p>
 
-[![build status](https://img.shields.io/travis/pablopunk/microsoccer.svg)](https://travis-ci.org/pablopunk/microsoccer)
-[![code coverage](https://img.shields.io/codecov/c/github/pablopunk/microsoccer.svg)](https://codecov.io/gh/pablopunk/microsoccer)
-[![code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![made with lass](https://img.shields.io/badge/made_with-lass-95CC28.svg)](https://lass.js.org)
-[![license](https://img.shields.io/github/license/pablopunk/microsoccer.svg)](<>)
-
-> Fetch soccer matches info
-
+<p align="center">
+  <i>Microservice to fetch soccer matches info and tv channels</i>
+</p>
 
 ## Usage
+
+```sh
+npm start
+```
+
+That's it! Now you have a microservice listening on port 3000
+
+
+## API
 
 Get a list of Real Madrid recent matches as well as the next matches.
 
@@ -24,14 +32,14 @@ Get a list of Real Madrid recent matches as well as the next matches.
 * [tvrealmadrid.com](https://github.com/pablopunk/tvrealmadrid.com): See next matches for Real Madrid
 * [livesoccertv-parser](https://github.com/pablopunk/livesoccertv-parser): Fetch matches info with node
 
-
-## Contributors
-
-| Name             | Website              |
-| ---------------- | -------------------- |
-| **Pablo Varela** | <https://pablo.life> |
-
-
 ## License
 
-[MIT](LICENSE) © [Pablo Varela](https://pablo.life)
+MIT
+
+
+## Author
+
+| ![me](https://gravatar.com/avatar/fa50aeff0ddd6e63273a068b04353d9d?size=100)           |
+| --------------------------------- |
+| [Pablo Varela](https://pablo.life)   |
+
