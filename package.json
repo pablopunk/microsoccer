@@ -41,7 +41,7 @@
     "semicolon": false
   },
   "scripts": {
-    "test": "xo && ava",
+    "test": "xo",
     "start": "micro",
     "dev": "micro-dev"
   }
