@@ -11,7 +11,7 @@
     "Pablo Varela <pablovarela182@gmail.com>"
   ],
   "dependencies": {
-    "livesoccertv-parser": "^4.0.4",
+    "livesoccertv-parser": "^4.0.5",
     "micro": "^9.1.0"
   },
   "devDependencies": {
