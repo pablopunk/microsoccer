@@ -56,7 +56,7 @@ module.exports = async (req, res) => {
   }
 }
 
-function cacheExists (country, team, timezone) {
+function cacheExists(country, team, timezone) {
   if (cache[country] && cache[country][team] && cache[country][timezone]) {
     return cache[country][team][timezone].length > 0
   }
@@ -64,7 +64,7 @@ function cacheExists (country, team, timezone) {
   return false
 }
 
-async function populateCache (country, team, timezone) {
+async function populateCache(country, team, timezone) {
   console.log(`Populating ${country}/${team}`)
 
   if (!cache[country]) {
