@@ -44,5 +44,8 @@
     "test": "xo",
     "start": "micro",
     "dev": "micro-dev"
+  },
+  "now": {
+    "alias": "soccer.now.sh"
   }
 }
