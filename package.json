@@ -11,12 +11,11 @@
     "Pablo Varela <pablovarela182@gmail.com>"
   ],
   "dependencies": {
+    "@pablopunk/geo-ip": "^1.0.0",
     "is-ip": "^2.0.0",
     "livesoccertv-parser": "^4.1.0",
     "micro": "^9.1.0",
-    "pify": "^3.0.0",
-    "request-ip": "^2.0.2",
-    "satelize": "^0.2.0"
+    "request-ip": "^2.0.2"
   },
   "devDependencies": {
     "micro-dev": "^2.2.0",
