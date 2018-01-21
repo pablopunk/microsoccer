@@ -32,7 +32,8 @@ Get a list of Arsenal's games with UK's time zone. Default timezone is `Europe/M
 
 ## Related
 
-* [tvrealmadrid.com](https://github.com/pablopunk/tvrealmadrid.com): See next matches for Real Madrid
+* [tvrealmadrid.com](https://github.com/pablopunk/tvrealmadrid.com): Real Madrid games and schedules
+* [tvarsenal.com](https://github.com/pablopunk/tvarsenal.com): Arsenal games and schedules
 * [livesoccertv-parser](https://github.com/pablopunk/livesoccertv-parser): Fetch matches info with node
 
 ## License
