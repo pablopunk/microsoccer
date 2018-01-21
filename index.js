@@ -2,7 +2,10 @@ const {parse} = require('url')
 const {send} = require('micro')
 const getMatches = require('livesoccertv-parser')
 
-const getFolderFromUrl = (url, index) => url.split('/')[index]
+const getFolderFromUrl = (url, index) =>
+  url
+    .split('?')[0]
+    .split('/')[index]
 const getCountryFromUrl = url => getFolderFromUrl(url, 1)
 const getTeamFromUrl = url => getFolderFromUrl(url, 2)
 
