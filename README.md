@@ -22,9 +22,13 @@ That's it! Now you have a microservice listening on port 3000
 
 ## API
 
-Get a list of Real Madrid recent matches as well as the next matches.
+Get a list of Real Madrid's recent games as well as the next matches.
 
 `GET /spain/real-madrid`
+
+Get a list of Arsenal's games with UK's time zone. Default timezone is `Europe/Madrid`.
+
+`GET /england/arsenal?timezone=Europe/London`
 
 
 ## Related
