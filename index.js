@@ -14,6 +14,7 @@ const defaultTimezone = 'Europe/Madrid'
 
 module.exports = async (req, res) => {
   const [country, team] = [getCountryFromUrl(req.url), getTeamFromUrl(req.url)]
+
   let headersSent = false
 
   if (!country || !team) {
@@ -31,10 +32,11 @@ module.exports = async (req, res) => {
   if (!cache[country] || !cache[country][team] || !cache[country][team][timezone]) {
     await populateCache(country, team, timezone)
       .catch(err => {
-        console.log(err.message)
+        console.log('Error populating', err.message)
         send(res, 404, 'Not found')
         headersSent = true
       })
+
     if (!headersSent) {
       // Reload item cache periodically
       setInterval(() => populateCache(country, team, timezone), cacheItemLife)
