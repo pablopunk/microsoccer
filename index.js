@@ -1,6 +1,7 @@
 const {parse} = require('url')
 const {send} = require('micro')
 const getMatches = require('livesoccertv-parser')
+const ms = require('ms')
 
 const getFolderFromUrl = (url, index) =>
   url
@@ -10,8 +11,10 @@ const getCountryFromUrl = url => getFolderFromUrl(url, 1)
 const getTeamFromUrl = url => getFolderFromUrl(url, 2)
 
 let cache = {}
-const cacheItemLife = 1000 * 60 * 24 // 1 day
-const cacheLife = 1000 * 60 * 24 * 7 // 1 week
+// If an item is in the cache, it will update every 5 minutes
+const cacheItemLife = ms('5m')
+// Reset cache every day
+const cacheLife = ms('1d')
 
 const defaultTimezone = 'Europe/Madrid'
 
