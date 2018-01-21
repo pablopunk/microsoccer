@@ -43,6 +43,10 @@ module.exports = async (req, res) => {
     }
   }
 
+  // Allow CORS
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET')
+
   if (!headersSent) {
     send(res, 200, {matches: cache[country][team][timezone]})
   }
