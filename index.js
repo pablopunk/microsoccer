@@ -16,7 +16,7 @@ const cacheItemLife = ms('5m')
 // Reset cache every day
 const cacheLife = ms('1d')
 
-const defaultTimezone = 'Europe/Madrid'
+const defaultTimezone = 'Europe/Paris'
 
 module.exports = async (req, res) => {
   const [country, team] = [getCountryFromUrl(req.url), getTeamFromUrl(req.url)]
