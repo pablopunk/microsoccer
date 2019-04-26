@@ -46,7 +46,6 @@ module.exports = async (req, res) => {
     url === '/' ||
     !country ||
     !team) {
-
     send(res, 404, 'Not found')
     return
   }
