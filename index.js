@@ -18,55 +18,58 @@ const cacheLife = ms('1d')
 
 const defaultTimezone = 'Europe/Paris'
 
-module.exports = async (req, res) => {
-  const [country, team] = [getCountryFromUrl(req.url), getTeamFromUrl(req.url)]
+const getDataFromUrl = (url) => {
+  const country = getCountryFromUrl(url)
+  const team = getTeamFromUrl(url)
 
-  let headersSent = false
-
-  if (!country || !team) {
-    send(res, 404, 'Not found')
-    return
-  }
-
-  // Get timezone from ?timezone or use default
   let timezone = defaultTimezone
-  const {query} = parse(req.url, true)
+  const {query} = parse(url, true)
+
   if (query && query.timezone) {
     timezone = query.timezone
   }
 
-  if (!cache[country] || !cache[country][team] || !cache[country][team][timezone]) {
-    await populateCache(country, team, timezone)
-      .catch(err => {
-        console.log('Error populating', err.message)
-        send(res, 404, 'Not found')
-        headersSent = true
-      })
+  return { country, team, timezone }
+}
 
-    if (!headersSent) {
-      // Reload item cache periodically
-      setInterval(() => populateCache(country, team, timezone), cacheItemLife)
-    }
-  }
-
-  // Allow CORS
+module.exports = async (req, res) => {
+  // CORS
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET')
 
-  if (!headersSent) {
-    send(res, 200, {matches: cache[country][team][timezone]})
+  const { url } = req
+  const { country, team, timezone } = getDataFromUrl(url)
+
+  if (
+    url === '/favicon.ico' ||
+    url === '' ||
+    url === '/' ||
+    !country ||
+    !team) {
+
+    send(res, 404, 'Not found')
+    return
   }
+
+  if (cache[url]) {
+    send(res, 200, {matches: cache[req.url]})
+    return
+  }
+
+  await populateCache({ url, country, team, timezone })
+    .then(_ => {
+      send(res, 200, {matches: cache[url]})
+      setInterval(() => populateCache(country, team, timezone), cacheItemLife)
+    })
+    .catch(err => {
+      console.log('Error populating', err.message)
+      send(res, 404, 'Not found')
+    })
 }
 
-async function populateCache (country, team, timezone) {
-  console.log(`Populating ${country}/${team} [${timezone}]`)
-  if (!cache[country]) {
-    cache[country] = {}
-  }
-  if (!cache[country][team]) {
-    cache[country][team] = {}
-  }
-  cache[country][team][timezone] = await getMatches(country, team, {timezone})
+async function populateCache ({ url, country, team, timezone }) {
+  console.log(`Populating ${url}`)
+  cache[url] = await getMatches(country, team, {timezone})
 }
 
 // Reset cache completely periodically
