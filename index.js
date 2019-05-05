@@ -31,9 +31,9 @@ const getDataFromUrl = (url) => {
   return { country, team, timezone }
 }
 
-app.use(cache({maxAge: 1 * 60 * 1000})) // 1 minute cache
-
 app.use(cors({ origin () { return '*' } }))
+
+app.use(cache({maxAge: 1 * 60 * 1000})) // 1 minute cache
 
 app.use(async (ctx, next) => {
   if (ctx.path.includes('favicon')) {
