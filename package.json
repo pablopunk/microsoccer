@@ -11,13 +11,14 @@
     "Pablo Varela <pablovarela182@gmail.com>"
   ],
   "dependencies": {
+    "@koa/cors": "^3.0.0",
     "cache": "^2.1.0",
-    "livesoccertv-parser": "^5.3.0",
-    "micro": "^9.1.0",
-    "ms": "^2.1.1"
+    "koa": "^2.7.0",
+    "koa-incache": "^0.5.0",
+    "livesoccertv-parser": "^5.3.0"
   },
   "devDependencies": {
-    "micro-dev": "^2.2.0",
+    "nodemon": "^1.19.0",
     "standard": "^10.0.3"
   },
   "homepage": "https://github.com/pablopunk/microsoccer",
@@ -40,7 +41,6 @@
   },
   "scripts": {
     "test": "standard",
-    "start": "micro",
-    "dev": "micro-dev"
+    "dev": "NODE_ENV=development nodemon index.js"
   }
 }

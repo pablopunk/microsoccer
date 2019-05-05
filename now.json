@@ -3,7 +3,7 @@
   "name": "microsoccer",
   "alias": "soccer",
   "builds": [
-    { "src": "index.js", "use": "now-micro" }
+    { "src": "index.js", "use": "@now/node" }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/index.js" }

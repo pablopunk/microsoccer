@@ -1,10 +1,10 @@
+const Koa = require('koa')
+const cache = require('koa-incache')
+const cors = require('@koa/cors')
 const {parse} = require('url')
-const {send} = require('micro')
 const getMatches = require('livesoccertv-parser')
-const ms = require('ms')
-const Cache = require('cache')
 
-const cache = new Cache(ms('5m')) // 5 minutes cache
+const app = new Koa
 
 const defaultTimezone = 'Europe/Paris'
 
@@ -31,40 +31,38 @@ const getDataFromUrl = (url) => {
   return { country, team, timezone }
 }
 
-async function populateCache ({ url, country, team, timezone }) {
-  console.log(`Populating ${url}`)
-  cache.put(url, await getMatches(country, team, {timezone}))
-}
+app.use(cache({maxAge: 1 * 60 * 1000})) // 1 minute cache
 
-module.exports = async (req, res) => {
-  // CORS
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'GET')
+app.use(cors({ origin() { return '*' } }))
 
-  const { url } = req
-  const { country, team, timezone } = getDataFromUrl(url)
+app.use(async (ctx, next) => {
+  if (ctx.path.includes('favicon')) {
+    ctx.throw(404)
+  } else if (ctx.path === '') {
+    ctx.throw(404)
+  } else if (ctx.path === '/') {
+    ctx.throw(404)
+  } else {
+    await next()
+  }
+})
 
-  if (
-    url === '/favicon.ico' ||
-    url === '' ||
-    url === '/' ||
-    !country ||
-    !team) {
-    send(res, 404, 'Not found')
+app.use(async ctx => {
+  const { country, team, timezone } = getDataFromUrl(ctx.path)
+  if (!country || !team || !timezone) {
+    ctx.throw(404)
     return
   }
+  const matches = await getMatches(country, team, {timezone})
 
-  const cached = cache.get(url)
-  if (cached) {
-    return {matches: cached}
-  }
+  ctx.cached({matches})
+  ctx.body = {matches}
+})
 
-  await populateCache({ url, country, team, timezone })
-    .then(_ => {
-      send(res, 200, {matches: cache.get(url)})
-    })
-    .catch(err => {
-      console.log('Error populating', err.message)
-      send(res, 404, 'Not found')
-    })
+if (process.env.NODE_ENV === 'development') {
+  const port = 3000
+  app.listen(port)
+  console.log('Listening on', port)
 }
+
+module.exports = app.callback()
