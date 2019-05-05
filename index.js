@@ -34,7 +34,7 @@ const getDataFromUrl = (url) => {
 const validDomains = [ 'https://tvrealmadrid.com', 'https://tvarsenal.com' ]
 
 app.use(cors({
-  origin(ctx) {
+  origin (ctx) {
     if (validDomains.includes(ctx.request.header.origin)) {
       return ctx.request.header.origin
     }
