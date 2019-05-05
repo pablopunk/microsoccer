@@ -4,7 +4,7 @@ const cors = require('@koa/cors')
 const {parse} = require('url')
 const getMatches = require('livesoccertv-parser')
 
-const app = new Koa
+const app = new Koa()
 
 const defaultTimezone = 'Europe/Paris'
 
@@ -33,7 +33,7 @@ const getDataFromUrl = (url) => {
 
 app.use(cache({maxAge: 1 * 60 * 1000})) // 1 minute cache
 
-app.use(cors({ origin() { return '*' } }))
+app.use(cors({ origin () { return '*' } }))
 
 app.use(async (ctx, next) => {
   if (ctx.path.includes('favicon')) {
@@ -49,7 +49,7 @@ app.use(async (ctx, next) => {
 
 app.use(async ctx => {
   const { country, team, timezone } = getDataFromUrl(ctx.path)
-  if (!country || !team || !timezone) {
+  if (!country || !team || !timezone) {
     ctx.throw(404)
     return
   }
