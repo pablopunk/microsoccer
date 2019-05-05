@@ -31,7 +31,7 @@ const getDataFromUrl = (url) => {
   return { country, team, timezone }
 }
 
-const validDomains = [ 'tvrealmadrid.com', 'tvarsenal.com' ]
+const validDomains = [ 'https://tvrealmadrid.com', 'https://tvarsenal.com' ]
 
 app.use(cors({
   origin(ctx) {
