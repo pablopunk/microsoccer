@@ -31,7 +31,19 @@ const getDataFromUrl = (url) => {
   return { country, team, timezone }
 }
 
-app.use(cors({ origin () { return '*' } }))
+const validDomains = [ 'tvrealmadrid.com', 'tvarsenal.com' ]
+
+app.use(cors({
+  origin(ctx) {
+    if (validDomains.includes(ctx.request.header.origin)) {
+      return ctx.request.header.origin
+    }
+    return validDomains[0]
+  }
+}))
+
+app.use(cors({
+  origin () { return '*' } }))
 
 app.use(cache({maxAge: 1 * 60 * 1000})) // 1 minute cache
 
