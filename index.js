@@ -34,7 +34,7 @@ const getDataFromUrl = (url) => {
 
 const validDomains = [ 'https://tvrealmadrid.com', 'https://tvarsenal.com' ]
 
-if (typeof process.env.ACCEPT === 'string') {
+if (typeof process.env.ACCEPT === 'string') {
   validDomains.push(process.env.ACCEPT)
 }
 
@@ -77,7 +77,7 @@ app.use(async ctx => {
 })
 
 if (process.env.NODE_ENV === 'development') {
-  const port = process.env.PORT || 3000
+  const port = process.env.PORT || 3000
   app.listen(port)
   console.log('Listening on', port)
 }
