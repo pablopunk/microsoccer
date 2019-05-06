@@ -1,7 +1,7 @@
+const { parse: urlParse } = require('url')
 const Koa = require('koa')
 const cache = require('koa-incache')
 const cors = require('@koa/cors')
-const {parse} = require('url')
 const getMatches = require('livesoccertv-parser')
 
 const app = new Koa()
@@ -22,7 +22,8 @@ const getDataFromUrl = (url) => {
   const team = getTeamFromUrl(url)
 
   let timezone = defaultTimezone
-  const {query} = parse(url, true)
+
+  const { query } = urlParse(url, true)
 
   if (query && query.timezone) {
     timezone = query.timezone
@@ -60,7 +61,7 @@ app.use(async (ctx, next) => {
 })
 
 app.use(async ctx => {
-  const { country, team, timezone } = getDataFromUrl(ctx.path)
+  const { country, team, timezone } = getDataFromUrl(ctx.url)
   if (!country || !team || !timezone) {
     ctx.throw(404)
     return
