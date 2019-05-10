@@ -18,7 +18,10 @@
     "livesoccertv-parser": "^5.3.0"
   },
   "devDependencies": {
+    "husky": "^2.2.0",
     "nodemon": "^1.19.0",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0",
     "standard": "^10.0.3"
   },
   "homepage": "https://github.com/pablopunk/microsoccer",
@@ -35,12 +38,21 @@
   ],
   "license": "MIT",
   "main": "index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/pablopunk/microsoccer"
   },
   "scripts": {
-    "test": "standard",
     "dev": "NODE_ENV=development nodemon index.js"
   }
 }

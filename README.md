@@ -2,7 +2,6 @@
 
 <p align="center">
   <a href="https://travis-ci.org/pablopunk/microsoccer"><img src="https://img.shields.io/travis/pablopunk/microsoccer.svg" /> </a>
-  <a href="https://github.com/sindresorhus/xo"><img src="https://img.shields.io/badge/code_style-XO-5ed9c7.svg" /> </a>
   <a href="https://github.com/pablopunk/miny"><img src="https://img.shields.io/badge/made_with-miny-1eced8.svg" /> </a>
 </p>
 
@@ -18,7 +17,6 @@ npm start
 
 That's it! Now you have a microservice listening on port 3000
 
-
 ## API
 
 Get a list of Real Madrid's recent games as well as the next matches.
@@ -29,21 +27,18 @@ Get a list of Arsenal's games with UK's time zone. Default timezone is `Europe/M
 
 `GET /england/arsenal?timezone=Europe/London`
 
-
 ## Related
 
-* [tvrealmadrid.com](https://github.com/pablopunk/tvrealmadrid.com): Real Madrid games and schedules
-* [tvarsenal.com](https://github.com/pablopunk/tvarsenal.com): Arsenal games and schedules
-* [livesoccertv-parser](https://github.com/pablopunk/livesoccertv-parser): Fetch matches info with node
+- [tvrealmadrid.com](https://github.com/pablopunk/tvrealmadrid.com): Real Madrid games and schedules
+- [tvarsenal.com](https://github.com/pablopunk/tvarsenal.com): Arsenal games and schedules
+- [livesoccertv-parser](https://github.com/pablopunk/livesoccertv-parser): Fetch matches info with node
 
 ## License
 
 MIT
 
-
 ## Author
 
-| ![me](https://gravatar.com/avatar/fa50aeff0ddd6e63273a068b04353d9d?size=100)           |
-| --------------------------------- |
-| [Pablo Varela](https://pablo.life)   |
-
+| ![me](https://gravatar.com/avatar/fa50aeff0ddd6e63273a068b04353d9d?size=100) |
+| ---------------------------------------------------------------------------- |
+| [Pablo Varela](https://pablo.life)                                           |
